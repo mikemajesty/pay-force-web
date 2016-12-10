@@ -101,7 +101,7 @@ angular.module('todoController', [])
 			}
 		});
 		channelSales.animate(0.64);
-		directSales.animate(0.34);
+		directSales.animate(0.32);
 
 		// DELETE ==================================================================
 		// delete a todo after checking it
@@ -115,4 +115,5 @@ angular.module('todoController', [])
 					$scope.todos = data; // assign our new list of todos
 				});
 		};
+		
 	}]);
