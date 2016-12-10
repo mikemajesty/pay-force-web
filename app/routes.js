@@ -14,7 +14,7 @@ function getTodos(res) {
 
 module.exports = function (app) {
 
-    api.post('/api/pos/venda', function(req, res) {
+    app.post('/api/pos/venda', function(req, res) {
 
         console.log("UHUUU");
 
