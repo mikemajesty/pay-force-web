@@ -25,7 +25,8 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 
 
 // routes ======================================================================
-require('./app/routes.js')(app);
+require('./app/pos.js')(app);
+require('./app/mobile.js')(app);
 
 // listen (start app with node server.js) ======================================
 app.listen(port);
