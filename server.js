@@ -9,7 +9,12 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
 // configuration ===============================================================
-mongoose.connect(database.localUrl); 	// Connect to local MongoDB instance. A remoteUrl is also available (modulus.io)
+
+if (process.env.NODE_ENV == 'production') {
+    mongoose.connect(process.env.MONGODB_URI);
+} else {
+    mongoose.connect('mongodb://mongo/econnect');
+}
 
 app.use(express.static('./public')); 		// set the static files location /public/img will be /img for users
 app.use(morgan('dev')); // log every request to the console
