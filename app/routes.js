@@ -18,6 +18,6 @@ module.exports = function (app) {
 
         console.log("UHUUU");
 
-        res.ok();
+        res.status(200).send();
     });
 };
