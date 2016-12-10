@@ -39,10 +39,10 @@ angular.module('todoController', [])
 			labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
 			datasets: [
 				{
-					label: "Front",
-					fillColor: "rgba(247, 80, 90, 0.0)",
-					strokeColor: "#F7505A",
-					pointColor: "#F7505A",
+					label: "Back",
+					fillColor: "rgba(19, 71, 34, 0.0)",
+					strokeColor: "rgba(88, 188, 116, 1)",
+					pointColor: "rgba(88, 188, 116, 1)",
 					pointStrokeColor: "rgba(0,0,0,0.2)",
 					pointHighlightStroke: "rgba(225,225,225,0.75)",
 					data: [3400, 3400, 3400, 3400, 3400, 3400, 3400]
@@ -54,7 +54,7 @@ angular.module('todoController', [])
 					pointColor: "rgba(255, 172, 100, 1)",
 					pointStrokeColor: "rgba(0,0,0,0.2)",
 					pointHighlightStroke: "rgba(225,225,225,0.75)",
-					data: [3400, 3400, 3400, 3400, 3200, 3200, 3200]
+					data: [3200, 3200, 3200, 3200, 3200, 3200, 3200]
 				}
 			]
 		};
@@ -76,18 +76,6 @@ angular.module('todoController', [])
 
 		});
 
-		var creditSales = new ProgressBar.Circle('#creditSales', {
-			color: '#F7505A',
-			strokeWidth: 5,
-			trailWidth: 3,
-			duration: 1000,
-			text: {
-				value: '0%'
-			},
-			step: function (state, bar) {
-				bar.setText((bar.value() * 100).toFixed(0) + "%");
-			}
-		});
 		var channelSales = new ProgressBar.Circle('#channelSales', {
 			color: '#e88e3c',
 			strokeWidth: 5,
@@ -112,7 +100,6 @@ angular.module('todoController', [])
 				bar.setText((bar.value() * 100).toFixed(0) + "%");
 			}
 		});
-		creditSales.animate(0.8);
 		channelSales.animate(0.64);
 		directSales.animate(0.34);
 
