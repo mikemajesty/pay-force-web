@@ -16,22 +16,6 @@
 	<!-- load bootstrap -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	<style>
-		html {
-			overflow-y: scroll;
-		}
-		
-		body {
-			padding-top: 50px;
-		}
-		
-		#todo-list {
-			margin-bottom: 30px;
-		}
-		
-		#todo-form {
-			margin-bottom: 50px;
-		}
-		
 		@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 		@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 		html {
@@ -93,10 +77,8 @@
 		#sideMenu {
 			width: 240px;
 			height: 100%;
-			padding: 30px;
 			border-right: 1px solid rgba(0, 0, 0, .1);
 			background: #1b232a;
-			display: table-cell;
 			vertical-align: top;
 			color: #fff;
 		}
@@ -557,10 +539,9 @@
 
 <body ng-controller="mainController">
 	<div class="container">
-
 		<div id="container">
-			<div id="sideMenu">
-				<div id="sideMenuFixed"></div>
+			<div id="sideMenu"></div>
+			<div id="sideMenuFixed">
 				<div id="sidecontent">
 					<h1>E C <i class="fa fa-pie-chart"></i> N O M Y</h1>
 
@@ -670,7 +651,6 @@
 		</div>
 	</div>
 	</div>
-
 </body>
 
 </html>
