@@ -1,3 +1,12 @@
+proxy:
+  image: marvambass/nginx-ssl-secure
+  ports: 
+    - "80:80"
+    - "443:443"
+  volumes:
+    - "./proxy:/etc/nginx/external/"
+  links:
+    - web
 web:
   build: .
   dockerfile: Dockerfile
