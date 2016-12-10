@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 var Movimento = require('./movimento');
-var Cartao = require('./cartao');
+var Conta = require('./conta');
 
 module.exports = mongoose.model('User', {
-    numero: {type: String, default: ''},
+    nome: {type: String, default: ''},
+    telefone: {type: String, default: ''},
     valor: {type: Number, default: 0},
     movimentos: [Movimento],
-    cartoes: [Cartao]
+    contas: [Conta]
 });
