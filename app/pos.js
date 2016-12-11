@@ -14,7 +14,7 @@ module.exports = function(app) {
     app.get('/api/pos/resultado', function(req, res) {
         Transacao.findById(req.query.id, function(err, trans) {
             if (trans == null)
-                res.send("Gabriel Safado");
+                res.send("Usuário não encontrado");
             else if (trans.status === "I")
                 res.send({ status: trans.status });
             else
