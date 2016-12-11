@@ -1,5 +1,6 @@
 var Usuario = require('./models/usuario.js');
 var Transacao = require('./models/transacao.js');
+
 module.exports = function(app) {
 
     app.post('/api/pos/venda', function(req, res) {
@@ -13,7 +14,7 @@ module.exports = function(app) {
 
     app.get('/api/pos/resultado', function(req, res) {
         Transacao.findById(req.query.id, function(err, trans) {
-            if (trans == null)
+            if (trans === null)
                 res.send("Usuário não encontrado");
             else if (trans.status !== "I")
                 res.send(trans.status);

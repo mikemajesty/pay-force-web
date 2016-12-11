@@ -6,20 +6,59 @@ module.exports = function(app) {
     app.get('/api/mobile/usuario', function(req, res) {
         Usuario.findOne({ 'telefone': req.query.telefone }, function(err, user) {
             if (!err) {
-              res.send(user);
+                user.movimentos.reverse();
+                res.send(user);
+            } else {
+                res.status(404).send();
             }
-            res.status(400);
         });
     });
 
-    app.get('/api/mobile/confirma', function(req, res) {
-        Transacao.findOne({ 'telefone': req.query.telefone }, function(err, tras) {
+    app.get('/api/mobile/confirmar', function(req, res) {
+        Transacao.findById(req.query.transacao, function(err, trans) {
             if (!err) {
-              tras.status = "S";
-              tras.save();
-              res.send(user);
+              trans.status = "S";
+              trans.save();
+
+              Usuario.findOne({ 'telefone': trans.telefone }, function(e, usuario) {
+                  usuario.valor -= trans.valor;
+                  usuario.movimentos.push({
+                    data: Date.now(),
+                    descricao: 'Lojinha CodeForce',
+                    valor: trans.valor,
+                    categoria: 'Varejo'
+                  });
+                  usuario.save();
+
+                  res.status(200).send();
+              });
+            } else {
+                res.status(404).send();
             }
-            res.status(tras);
+        });
+    });
+
+    app.get('/api/mobile/recusar', function(req, res) {
+        Transacao.findById(req.query.transacao, function(err, tras) {
+            if (!err) {
+              tras.status = "N";
+              tras.save();
+
+              res.status(200).send();
+            } else {
+                res.status(404).send();
+            }
+        });
+    });
+
+    app.get('/api/mobile/transacao', function(req, res) {
+        Transacao.find({ 'telefone': req.query.telefone, 'status': 'I' }, function(err, trans) {
+            if (trans.length > 0) {
+                res.status(200).send(trans[0]);
+            } else {
+                res.status(200).send();
+            }
+            
         });
     });
 };

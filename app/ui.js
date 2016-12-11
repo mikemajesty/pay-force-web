@@ -7,12 +7,28 @@ module.exports = function (app) {
     });
 
     app.post('/registrar', function(req, res) {
-        Usuario.create({
-            nome: req.body.nome, 
-            telefone: req.body.telefone,
-            valor: 100.00
-        });
+        Usuario.findOne({telefone: req.body.telefone}, function(err, usuario) {
+            if (usuario === null) {
+                Usuario.create({
+                    nome: req.body.nome, 
+                    telefone: req.body.telefone,
+                    valor: 100.00,
+                    contas: [
+                        {
+                            bandeira: 'visa',
+                            numero: 3782,
+                            expiracao: '12/19'
+                        },
+                        {
+                            bandeira: 'mastercard',
+                            numero: 4513,
+                            expiracao: '11/20'
+                        }
+                    ]
+                });
+            }
 
-        res.render('registro_completo');
+            res.render('registro_completo');
+        });
     });
 };
