@@ -12,7 +12,7 @@ module.exports = function(app) {
         res.send(transacao._id);
     });
 
-    app.post('/api/pos/resultado', function(req, res) {
+    app.get('/api/pos/resultado', function(req, res) {
         Transacao.findById(req.body.id, function(err, trans) {
             if(trans.status)
                 res.send({status: trans.status});
