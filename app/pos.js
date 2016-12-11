@@ -15,7 +15,7 @@ module.exports = function(app) {
         Transacao.findById(req.query.id, function(err, trans) {
             if (trans == null)
                 res.send("Usuário não encontrado");
-            else if (trans.status === "I")
+            else if (trans.status !== "I")
                 res.send(trans.status);
             else
                 res.send(400);

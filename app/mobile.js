@@ -1,5 +1,5 @@
 var Usuario = require('./models/usuario.js');
-var Transacao = require('./models/usuario.js');
+var Transacao = require('./models/transacao.js');
 
 module.exports = function(app) {
 
