@@ -12,4 +12,8 @@ module.exports = function (app) {
         });
 
     });
+
+    app.post('/api/pos/resultado', function (req, res) {
+       res.status(400).json({confirmado: "OK"});
+    });
 };
