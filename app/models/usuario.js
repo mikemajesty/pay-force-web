@@ -6,6 +6,6 @@ module.exports = mongoose.model('User', {
     nome: {type: String, default: ''},
     telefone: {type: String, default: ''},
     valor: {type: Number, default: 0},
-    movimentos: [Movimento],
-    contas: [Conta]
+    movimentos: { type : Array , "default" : [] },
+    contas: { type : Array , "default" : [] }
 });
