@@ -13,6 +13,7 @@ module.exports = function(app) {
     });
 
     app.get('/api/pos/resultado', function(req, res) {
+        console.log('req.query.id', req.query.id);
         Transacao.findById(req.query.id, function(err, trans) {
             if (trans == null)
                 res.send("Gabriel Safado");
