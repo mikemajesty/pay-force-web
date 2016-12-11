@@ -13,11 +13,10 @@ module.exports = function(app) {
     });
 
     app.get('/api/pos/resultado', function(req, res) {
-        console.log('req.query.id', req.query.id);
         Transacao.findById(req.query.id, function(err, trans) {
             if (trans == null)
                 res.send("Gabriel Safado");
-            else if(trans.status === "S")
+            else if(trans.status === "I")
                 res.send({status: trans.status});
             else
                 res.send(400);
