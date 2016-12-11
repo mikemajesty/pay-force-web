@@ -16,7 +16,7 @@ module.exports = function(app) {
             if (trans == null)
                 res.send("Usuário não encontrado");
             else if (trans.status === "I")
-                res.send({ status: trans.status });
+                res.send(trans.status);
             else
                 res.send(400);
         });
