@@ -8,7 +8,7 @@ module.exports = function (app) {
             if (user) {
                 res.status(user).send();
             }
-            res.status(400).send();
+            res.status(400).send(user);
         });
     });
 };
