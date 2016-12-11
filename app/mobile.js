@@ -1,20 +1,13 @@
+var Usuario = require('./models/usuario.js');
+
 module.exports = function (app) {
 
-    app.post('/api/mobile/confirmar', function (req, res) {
-
-        console.log("Post Inicio Confirmar");
-        console.log(req.body);
-        console.log("Post Confirmar");
-
-        res.status(200).send();
-    });
-
-    app.post('/api/mobile/negacao', function (req, res) {
-
-        console.log("Post Inicio Negação");
-        console.log(req.body);
-        console.log("Post Negação");
-
-        res.status(200).send();
+    app.get('/api/mobile/usuario', function (req, res) {
+        Usuario.findOne({ 'telefone': req.query.telefone }, function (err, user) {
+            if (user) {
+                res.status(user).send();
+            }
+            res.status(404).send();
+        });
     });
 };

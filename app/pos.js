@@ -1,11 +1,15 @@
+var Usuario = require('./models/usuario.js');
+
 module.exports = function (app) {
 
     app.post('/api/pos/venda', function (req, res) {
 
-        console.log("POS INICIO");
-        console.log(req.body);
-        console.log("POS VENDA");
+        Usuario.findOne({ 'telefone': req.body.telefone }, function (err, user) {
+            if (user) {
+                res.status(200).send();
+            }
+            res.status(404).send();
+        });
 
-        res.status(200).send();
     });
 };
