@@ -12,7 +12,7 @@ module.exports = function (app) {
                 Usuario.create({
                     nome: req.body.nome, 
                     telefone: req.body.telefone,
-                    valor: 100.00,
+                    valor: 500.00,
                     contas: [
                         {
                             bandeira: 'visa',
@@ -24,7 +24,7 @@ module.exports = function (app) {
                             numero: 4513,
                             expiracao: '11/20'
                         }
-                    ]
+                    ],
                 });
             }
 
