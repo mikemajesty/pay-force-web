@@ -5,19 +5,20 @@ module.exports = function(app) {
     app.post('/api/pos/venda', function(req, res) {
 
         var transacao = new Transacao({ telefone: req.body.telefone, valor: req.body.valor });
-        transacao.save();
+        transacao.save(function(err, data) {
+            if (err) console.log(err);
+            else console.log('Saved : ', data);
+        });
         res.send(transacao._id);
     });
 
     app.post('/api/pos/resultado', function(req, res) {
-        res.status(400).json({ confirmado: "OK" });
+        Transacao.findById(req.body.id, function(err, trans) {
+            if(trans.status)
+                res.send({status: trans.status});
+            else
+                res.send(400);
+        });
     });
 };
-
-// Usuario.findOne({ 'telefone': req.body.telefone }, function (err, user) {
-//     if (user) {
-//         res.status(200).send();
-//     }
-//     res.status(200).send();
-// });
 
