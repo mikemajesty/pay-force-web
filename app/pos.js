@@ -3,7 +3,6 @@ var Transacao = require('./models/transacao.js');
 module.exports = function(app) {
 
     app.post('/api/pos/venda', function(req, res) {
-
         var transacao = new Transacao({ telefone: req.body.telefone, valor: req.body.valor });
         transacao.save(function(err, data) {
             if (err) console.log(err);
@@ -16,8 +15,8 @@ module.exports = function(app) {
         Transacao.findById(req.query.id, function(err, trans) {
             if (trans == null)
                 res.send("Gabriel Safado");
-            else if(trans.status === "I")
-                res.send({status: trans.status});
+            else if (trans.status === "I")
+                res.send({ status: trans.status });
             else
                 res.send(400);
         });
