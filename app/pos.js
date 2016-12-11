@@ -14,6 +14,8 @@ module.exports = function(app) {
 
     app.get('/api/pos/resultado', function(req, res) {
         Transacao.findById(req.query.id, function(err, trans) {
+            res.setHeader('Content-Type', 'application/json');
+
             if (trans === null)
                 res.send("Usuário não encontrado");
             else if (trans.status !== "I")
